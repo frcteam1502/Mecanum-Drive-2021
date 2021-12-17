@@ -19,10 +19,10 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public final class Constants {
     public static final class Motors {
-        public static final CANSparkMax DRIVE_FRONT_LEFT = new CANSparkMax(0, MotorType.kBrushless);
-        public static final CANSparkMax DRIVE_FRONT_RIGHT = new CANSparkMax(1, MotorType.kBrushless);
-        public static final CANSparkMax DRIVE_BACK_LEFT = new CANSparkMax(2, MotorType.kBrushless);
-        public static final CANSparkMax DRIVE_BACK_RIGHT = new CANSparkMax(3, MotorType.kBrushless);
+        public static final CANSparkMax DRIVE_FRONT_LEFT = new CANSparkMax(1, MotorType.kBrushless);
+        public static final CANSparkMax DRIVE_FRONT_RIGHT = new CANSparkMax(2, MotorType.kBrushless);
+        public static final CANSparkMax DRIVE_BACK_LEFT = new CANSparkMax(3, MotorType.kBrushless);
+        public static final CANSparkMax DRIVE_BACK_RIGHT = new CANSparkMax(4, MotorType.kBrushless);
     }
     public static final class Joysticks {
         public static final Joystick RIGHT_JOYSTICK = new Joystick(0);

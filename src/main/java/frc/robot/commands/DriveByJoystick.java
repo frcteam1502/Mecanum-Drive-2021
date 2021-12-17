@@ -4,13 +4,12 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.Joysticks;
-import frc.robot.Constants.Motors;
+import frc.robot.Constants.*;
+import frc.robot.subsystems.Drivetrain;
 
 public class DriveByJoystick extends CommandBase {
-  private final MecanumDrive mecDrive = new MecanumDrive(Motors.DRIVE_FRONT_LEFT, Motors.DRIVE_FRONT_RIGHT, Motors.DRIVE_BACK_LEFT, Motors.DRIVE_BACK_RIGHT);
+  private final Drivetrain drivetrain = new Drivetrain(Motors.DRIVE_FRONT_LEFT, Motors.DRIVE_FRONT_RIGHT, Motors.DRIVE_BACK_LEFT, Motors.DRIVE_BACK_RIGHT);
   /** Creates a new DriveByJoystick. */
   public DriveByJoystick() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -23,7 +22,10 @@ public class DriveByJoystick extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mecDrive.driveCartesian(Joysticks.RIGHT_JOYSTICK.getY(), Joysticks.RIGHT_JOYSTICK.getX(), Joysticks.RIGHT_JOYSTICK.getZ());
+    drivetrain.move(
+      Joysticks.RIGHT_JOYSTICK.getY(),
+      Joysticks.RIGHT_JOYSTICK.getX(),
+      Joysticks.RIGHT_JOYSTICK.getTwist());
   }
 
   // Called once the command ends or is interrupted.
@@ -34,5 +36,13 @@ public class DriveByJoystick extends CommandBase {
   @Override
   public boolean isFinished() {
     return false;
+  }
+
+
+  private final double truncateDecimal(double number){
+
+    number = (((int)(number*100))/100.0);
+
+    return number;
   }
 }
